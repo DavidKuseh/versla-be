@@ -19,7 +19,7 @@ router.post('/login', async (req,res) => {
     try {
         const {email, password} = req.body;
         const login = await Users.findUserById(email, password);
-        res.status(200).json(login)
+        res.status(200).json({login, message: `Welcome back!`})
     } catch (error) {
         res.status(500).json({ error: 'Cannot log in'})
     }

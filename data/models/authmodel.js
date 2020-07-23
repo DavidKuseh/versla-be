@@ -1,4 +1,4 @@
-const db = require('../dbConfig');
+const db = require('../../config/dbConfig');
 
 async function addNewUser(user) {
     try {
