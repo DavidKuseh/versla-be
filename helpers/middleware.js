@@ -25,7 +25,7 @@ module.exports = {
 
     validateUser: async function (req, res, next) {
         const { firstName, lastName, email, password } = req.body;
-        const user = email !== undefined ? await Users.findUserById({ email }) : undefined;
+        const user = email !== undefined ? await Users.getBy({ email }) : undefined;
 
         if (firstName && lastName && email && password && req.path === '/register') {
             (user === undefined) ? next() : res.status(403).json({ message: variables.alreadyInUse });

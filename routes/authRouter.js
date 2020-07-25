@@ -22,9 +22,9 @@ router.post('/register', async (req,res) => {
 router.post('/login', async (req,res) => {
     try {
         const token = generateToken(req.user);
-        const {email, password} = req.body;
-        const login = await Users.findUserById(email, password);
-        res.status(200).json({login, message: loginWelcome(user.firstName), token })
+        const user = req.user;
+        delete user.password;
+        res.status(200).json({user, message: loginWelcome(user.firstName), token })
     } catch (error) {
         res.status(500).json({ message: errorMessage, error: error.message });
     }

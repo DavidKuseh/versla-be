@@ -23,6 +23,18 @@ async function findUserById(id) {
     }
 }
 
+async function getBy(filter) {
+    try {
+        const user = await db('users')
+        .select('id', 'firstName', 'lastname', 'password', 'email')
+        .where(filter)
+        .first()
+        return user;
+    } catch(error) {
+        console.log(error)
+    }
+}
+
 async function findUsers() {
     try {
         const users = await db('users')
@@ -36,5 +48,6 @@ async function findUsers() {
 module.exports = {
     addNewUser,
     findUserById,
+    getBy,
     findUsers
 }
