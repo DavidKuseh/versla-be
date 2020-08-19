@@ -18,6 +18,7 @@ module.exports = {
     noAccess: 'You are unauthorized to access or modify this information',
     newEntry: 'New entry successfully created',
     updatedEntry: 'Entry successfully updated', 
+    existingEntry: 'Entry found',
     entryRemoved: function (value) {
         return `${value} has been succefully deleted`
     },

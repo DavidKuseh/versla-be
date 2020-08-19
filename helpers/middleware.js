@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const secret = require('../config/secrets');
 const variables = require('./variables');
 const Users = require('../data/models/authmodel');
+const Products = require('../data/models/productModel');
 
 module.exports = {
     validateBody: function (req, res, next) {
@@ -50,6 +51,18 @@ module.exports = {
             })
         } else {
             res.status(400).json({ message: variables.supplyToken });
+        }
+    },
+
+    validateProduct: async function (req, res, next) {
+        const {name,description,price,condition,category} = req.body;
+        const product = await Products.getBy({ name });
+
+        if (name && description && price && condition && category && req.path === '/post') {
+            req.product = product;
+            next();
+        } else {
+            res.status(401).json({ message: variables.missingFields})
         }
     }
 };

@@ -7,7 +7,7 @@ exports.up = function(knex) {
           .string('name', 256)
           .notNullable();
       table
-          .text('description', longtext)
+          .text('description', 'longtext')
           .notNullable();
       table
           .integer('price')
