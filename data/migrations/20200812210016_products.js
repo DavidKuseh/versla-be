@@ -22,6 +22,6 @@ exports.up = function(knex) {
   };
   
   exports.down = function(knex) {
-    return knex.schema.dropIfTableExists('products')
+    return knex.schema.dropTableIfExists('products')
   };
   
