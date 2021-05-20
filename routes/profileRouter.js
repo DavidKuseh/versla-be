@@ -14,8 +14,8 @@ router.get('/all', async (req,res) => {
 
 router.get('/', async (req, res) => {
     try{
-        const profile = await Users.findUserById(req.decodedToken.sub);
-        console.log("req.decodedToken.sub: ", req.decodedToken.sub, profile);
+        const profile = await Users.findUserById(req.decodedToken.subject);
+        console.log("req.decodedToken.sub: ", req.decodedToken.subject, profile);
         res.status(200).json(profile);
     } catch(error){
         res.status(500).json({ message: errorMessage, error: error.message });
